@@ -204,13 +204,13 @@ export type TextDef<F extends Field> =
  */
 export type LabelPosition = {
   /**
-   * distance of a label from its base mark.
-   * if negative, the label position is insize.
+   * Distance of a label from its base mark.
+   * If negative, the label position is insize.
    */
   offset: number;
 
   /**
-   * anchor direction of a label from its base mark.
+   * Anchor direction of a label from its base mark.
    * The value could be one of `'left '` , `'right '` , `'top '` , `'middle '` ,
    * `'bottom '` , `'top-left '` , `'top-right '` , `'bottom-left '` , or  '`bottom-right '`
    */
@@ -226,16 +226,15 @@ export type LabelDefMixins = {
   /**
    * The layers of marks that the labels will avoid.
    * `'all'` means all the marks that are children of the root layer.
-   * number `n` means all the marks that are children of the nth ancestor layer.
+   * Otherwise, a number `n` means all the marks that are children of the nth ancestor layer.
    *
    * __Default value:__ `0` (only avoid the base mark)
    */
   avoidParentLayer?: 'all' | number;
 
   /**
-   * Mark definition of the label text mark without the `'type'` property.
-   *
-   * __See also:__ [`text` mark](https://vega.github.io/vega-lite/docs/text.html#properties)
+   * A label mark definition for customizing the label's text mark.
+   * This definition includes all [properties of a text mark](http://vega.github.io/vega-lite/docs/text.html#properties) except `type`.
    */
   mark?: Omit<MarkDef<'text'>, 'type'>;
 

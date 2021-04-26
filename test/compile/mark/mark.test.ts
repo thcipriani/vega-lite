@@ -335,8 +335,7 @@ describe('Mark', () => {
           }
         });
         const {label} = parseMarkGroupsAndLabels(model);
-        expect(label).toHaveLength(1);
-        expect(label[0]).toEqual({
+        expect(label).toEqual({
           name: 'marks_label',
           type: 'text',
           style: ['text'],
@@ -367,7 +366,7 @@ describe('Mark', () => {
             }
           });
           const {mark, label} = parseMarkGroupsAndLabels(model);
-          expect(label).toHaveLength(0);
+          expect(label).toBeFalsy();
           expect(mark[0].marks[0].marks[1]).toEqual({
             name: 'marks_label',
             type: 'text',
@@ -586,7 +585,7 @@ describe('Mark', () => {
         encoding: {x: {type: 'nominal', field: 'col'}}
       });
       const label = getLabel(model, 'anything');
-      expect(label).toHaveLength(0);
+      expect(label).toBeFalsy();
     });
 
     it(
@@ -598,7 +597,7 @@ describe('Mark', () => {
         });
         model.encoding.label = {type: 'nominal', field: 'col'};
         const label = getLabel(model, 'anything');
-        expect(label).toHaveLength(0);
+        expect(label).toBeFalsy();
         expect(localLogger.warns[0]).toEqual(log.message.dropChannelOnMark('arc', 'label'));
       })
     );
@@ -611,8 +610,7 @@ describe('Mark', () => {
         });
 
         const label = getLabel(model, 'anything');
-        expect(label).toHaveLength(1);
-        expect(label[0].transform[0]).toStrictEqual({
+        expect(label.transform[0]).toStrictEqual({
           type: 'label',
           size: {signal: '[width, height]'},
           method: 'reduced-search'
@@ -630,8 +628,7 @@ describe('Mark', () => {
         });
 
         const label = getLabel(model, 'anything');
-        expect(label).toHaveLength(1);
-        expect(label[0].transform[0]).toStrictEqual({
+        expect(label.transform[0]).toStrictEqual({
           type: 'label',
           size: {signal: '[width, height]'},
           anchor: ['top', 'top'],
@@ -650,8 +647,7 @@ describe('Mark', () => {
         });
 
         const label = getLabel(model, 'anything');
-        expect(label).toHaveLength(1);
-        expect(label[0].transform[0]).toStrictEqual({
+        expect(label.transform[0]).toStrictEqual({
           type: 'label',
           size: {signal: '[width, height]'},
           anchor: ['right', 'right'],
@@ -671,8 +667,7 @@ describe('Mark', () => {
         });
 
         const label = getLabel(model, 'anything');
-        expect(label).toHaveLength(1);
-        expect(label[0].transform[0]).toStrictEqual({
+        expect(label.transform[0]).toStrictEqual({
           type: 'label',
           size: {signal: '[width, height]'},
           anchor: ['middle'],
@@ -693,8 +688,7 @@ describe('Mark', () => {
           });
 
           const label = getLabel(model, 'anything');
-          expect(label).toHaveLength(1);
-          expect(label[0].transform[0].lineAnchor).toBe('end');
+          expect(label.transform[0].lineAnchor).toBe('end');
         });
 
         it(`should have correct default label-transform config for ${mark} (begin - vertical)`, () => {
@@ -710,8 +704,7 @@ describe('Mark', () => {
 
           const label = getLabel(model, 'anything');
           expect(model.markDef.orient).toBe('vertical');
-          expect(label).toHaveLength(1);
-          expect(label[0].transform[0]).toStrictEqual({
+          expect(label.transform[0]).toStrictEqual({
             type: 'label',
             size: {signal: '[width, height]'},
             padding: 50,
@@ -734,8 +727,7 @@ describe('Mark', () => {
 
           const label = getLabel(model, 'anything');
           expect(model.markDef.orient).toBe('vertical');
-          expect(label).toHaveLength(1);
-          expect(label[0].transform[0]).toStrictEqual({
+          expect(label.transform[0]).toStrictEqual({
             type: 'label',
             size: {signal: '[width, height]'},
             padding: 50,
@@ -759,8 +751,7 @@ describe('Mark', () => {
 
         const label = getLabel(model, 'anything');
         expect(model.markDef.orient).toBe('horizontal');
-        expect(label).toHaveLength(1);
-        expect(label[0].transform[0]).toStrictEqual({
+        expect(label.transform[0]).toStrictEqual({
           type: 'label',
           size: {signal: '[width, height]'},
           padding: 50,
@@ -783,8 +774,7 @@ describe('Mark', () => {
 
         const label = getLabel(model, 'anything');
         expect(model.markDef.orient).toBe('horizontal');
-        expect(label).toHaveLength(1);
-        expect(label[0].transform[0]).toStrictEqual({
+        expect(label.transform[0]).toStrictEqual({
           type: 'label',
           size: {signal: '[width, height]'},
           padding: 50,
@@ -804,8 +794,7 @@ describe('Mark', () => {
           });
 
           const label = getLabel(model, 'anything');
-          expect(label).toHaveLength(1);
-          expect(label[0].transform[0]).toStrictEqual({
+          expect(label.transform[0]).toStrictEqual({
             type: 'label',
             size: {signal: '[width, height]'},
             anchor: ['top-right', 'top', 'top-left', 'left', 'bottom-left', 'bottom', 'bottom-right', 'middle'],
@@ -823,8 +812,7 @@ describe('Mark', () => {
         });
 
         const label = getLabel(model, 'anything');
-        expect(label).toHaveLength(1);
-        expect(label[0].transform[0]).toStrictEqual({
+        expect(label.transform[0]).toStrictEqual({
           type: 'label',
           size: {signal: '[width, height]'},
           anchor: ['middle'],
